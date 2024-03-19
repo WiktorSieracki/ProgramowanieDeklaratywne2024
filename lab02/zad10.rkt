@@ -8,27 +8,20 @@
              (product term next (next a) b))))
 
 (define (silnia n)
-    (define (identity x) x)
-    (define (inc x) (+ x 1))
-    (product identity inc 1 n))
+    (define (term x) x)
+    (define (next x) (+ x 1))
+    (product term next 1 n))
 
-(silnia 3)
-
-
-
-(define (equation n)
-    (/ (- (* (+ 1 (* 2 n)) (+ 1 (* 2 n))) 1) (* (+ 1 (* 2 n)) (+ 1 (* 2 n))))
-)
+(silnia 5)
 
 
-(define (pi)
-    (define (term n)
-        (if (= n 0)
-            1
-            (equation n)))
-    (define (next n)
-        (- n 1))
-    (* 4 (product term next 1000 0))
-)
 
-(pi)
+(define (approx-pi n)
+  (define (term x)
+    (if (even? x)
+        (* (exact->inexact (+ x 2)) (exact->inexact (/ 1 (+ x 1))))
+        (* (exact->inexact (+ x 1)) (exact->inexact (/ 1 (+ x 2))))))
+  (define (next x) (+ x 1))
+  (* 4 (product term next 1 n)))
+
+(approx-pi 1000)
