@@ -1,11 +1,14 @@
 #lang racket
 
-
-(define (plus1 x) (+ x 1))
-
-
-
 (define (f g) (g 2))
 
+(define (square x) (* x x))
 
-(f (plus1 2))
+
+(f square)
+
+(f (lambda (z) (+ z (* 3 z))))
+
+
+; (f f)
+
