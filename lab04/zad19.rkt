@@ -29,3 +29,12 @@
     )
 )
 (inorder `(2 (3 () (4 () ())) (1 () ())))
+
+(define (mapTree f tree)
+    (cond
+    [(null? tree) `()]
+    [(list? (car tree)) (cons (mapTree f (car tree)) (mapTree f (cdr tree)))]
+    [else (cons (f (car tree)) (mapTree f (cdr tree)))]
+    )
+)
+(mapTree (lambda (x) (+ 10 x)) `(2 (3 () (4 () ())) (1 () ())))
