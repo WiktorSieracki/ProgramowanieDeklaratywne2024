@@ -22,3 +22,9 @@ fib(X,Y) :-
     fib(A, L),
     fib(B, M),
     Y is L + M.
+
+
+gcd(X, 0, X).
+gcd(X,Y,Z) :-
+    B is X mod Y,
+    gcd(Y,B,Z).
