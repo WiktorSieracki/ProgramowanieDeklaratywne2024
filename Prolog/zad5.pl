@@ -18,3 +18,24 @@ times(X,Y,Res):-
     plus(X,New,Res).
 
 
+fib(0,0).
+fib(1,1).
+
+fib(A,RES):-
+    B is A-1,
+    C is A-2,
+    fib(B,RES1),
+    fib(C,RES2),
+    plus(RES1,RES2,RES).
+
+sum-up(0,0).
+
+sum-up(A,RES):-
+    (
+        A > 0
+        -> B is A-1,
+        sum-up(B,RES1),
+        RES is RES1+A
+        ; sum-up(A,RES)
+    ).
+
