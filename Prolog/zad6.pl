@@ -37,8 +37,21 @@ times(A, B, Acc, Res) :-
 
 fib(A, Res) :- fib(A, 0, 1, Res).
 
-fib(0,0,1,0).
-fib(1,0,1,1).
+fib(0,_,_,0).
+fib(1,_,F2,F2).
 fib(A,F1,F2,Res):-
     A>1,
-    F12 is 
+    A1 is A-1,
+    F3 is F1+F2,
+    fib(A1,F2,F3,Res).
+
+
+sum-up(A,Res) :- sum-up(A,Res,0).
+
+sum-up(0,A,A).
+sum-up(A,Res,Acc) :-
+    A>0,
+    A1 is A-1,
+    Acc1 is Acc+A,
+    sum-up(A1,Res,Acc1).
+
