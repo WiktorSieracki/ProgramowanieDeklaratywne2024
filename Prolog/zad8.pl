@@ -45,6 +45,9 @@ combine([H1|T1],[H2|T2],Acc,L3):-
     append(Acc,[[H1,H2]],Acc1),
     combine(T1,T2,Acc1,L3).
 
+combine2([H1|T1],[H2|T2],[[H1,H2]|T3]):-
+    combine(T1,T2,T3).
+
 
 palindrom(L):-
     reverse(L,L).
@@ -53,11 +56,11 @@ p(X,[A,X,B|_],A,B).
 p(X,[_|T],Y,Z):-
     p(X,T,Y,Z).
 
-q(X,[X,X|_],L2):-
-    append([X,X],[],L2).
-q(X,[H|T],L1):-
-    q(X,T,[H|L1]).
+q(_,[],[]).
+q(X,[X,X|_],[X,X]).
+q(X,[H|T],[H|L1]):-
+    q(X,T,L1).
 
 
 % ?- q(3,[1,2,3,3,1,2,4],Z).
-% Z = [1,2,3,3] 
+% Z = [1,2,3,3]
