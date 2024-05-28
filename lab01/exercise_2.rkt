@@ -6,7 +6,8 @@
             (nwd b (remainder a b))))
 
 (define (nww a b)
-    (/ (* a b) (nwd a b)))
+    (/ (* a b) (nwd a b))
+    )
 
 
 (nwd 12 8)
